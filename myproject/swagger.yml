@@ -1,0 +1,294 @@
+swagger: '2.0'
+info:
+    title: Management API
+    version: 1.0.0
+    description: Management API
+
+consumes:
+    - application/json
+produces:
+    - application/json
+paths:
+    /mlGetDocList:
+        post:
+            parameters:
+                -
+                    name: body
+                    description: Document get list
+                    schema:
+                        $ref: '#/definitions/mlGetDocListRequest'
+                    in: body
+                    required: true
+            responses:
+                '200':
+                    description: Successful response.
+                    schema:
+                        $ref: '#/definitions/mlGetDocListResponse'
+            operationId: ml_get_list_all_document.getDocListResource.on_post
+            summary: Get the list of all Document
+            description: list of all document .
+    /mlAddCompanyGroup:
+        post:
+            parameters:
+                -
+                    name: body
+                    description: add company Group
+                    schema:
+                        $ref: '#/definitions/mlAddCompanyGroupRequest'
+                    in: body
+                    required: true
+            responses:
+                '200':
+                    description: Successful response.
+                    schema:
+                        $ref: '#/definitions/mlAddCompanyGroupResponse'
+            operationId: ml_add_company_group.addCompanyGroupResource.on_post
+            summary: Company Group Added successfully
+            description: company group successfully added .
+    /mlGetCompanyDetails:
+        post:
+            parameters:
+                -
+                    name: body
+                    description: get company details
+                    schema:
+                        $ref: '#/definitions/mlGetCompanyDetailsRequest'
+                    in: body
+                    required: true
+            responses:
+                '200':
+                    description: Successful response.
+                    schema:
+                        $ref: '#/definitions/mlGetCompanyDetailsResponse'
+            operationId: ml_get_company_details.companyDetailsResource.on_post
+            summary: Company Get details
+            description: company Get details .
+    /mlCityMapping:
+        post:
+            parameters:
+                -
+                    name: body
+                    description: city mapping 
+                    schema:
+                        $ref: '#/definitions/mlCityMappingRequest'
+                    in: body
+                    required: true
+            responses:
+                '200':
+                    description: Successful response.
+                    schema:
+                        $ref: '#/definitions/mlCityMappingResponse'
+            operationId: ml_add_city_mapping.cityMappingResource.on_post
+            summary: add city mapping
+            description: add city mapping .
+    /mlCompanyListGroup:
+        post:
+            parameters:
+                -
+                    name: body
+                    description: company list group 
+                    schema:
+                        $ref: '#/definitions/mlCompanyListGroupRequest'
+                    in: body
+                    required: true
+            responses:
+                '200':
+                    description: Successful response.
+                    schema:
+                        $ref: '#/definitions/mlCompanyListGroupResponse'
+            operationId: ml_get_company_list_group.companyListAndGroupResource.on_post
+            summary: list of company Group
+            description: list of company Group .
+    /mlGetCityList:
+        post:
+            parameters:
+                -
+                    name: body
+                    description: city list  
+                    schema:
+                        $ref: '#/definitions/mlGetCityListRequest'
+                    in: body
+                    required: true
+            responses:
+                '200':
+                    description: Successful response.
+                    schema:
+                        $ref: '#/definitions/mlGetCityListResponse'
+            operationId: ml_get_list_all_cities.getCityListResource.on_post
+            summary: list of city 
+            description: list of city .        
+definitions:
+    mlGetDocListRequest:
+        title: mlGetDocListRequest
+        description: 'request for document type detection'
+        type: object
+        properties:
+            authLoginID:
+                description: loginID.
+                type: string
+            authToken:
+                description: authToken.
+                type: string
+            ipAddress:
+                description: IP Address.
+                type: string
+            timeStamp:
+                description: timeStamp.
+                type: string
+        example: |-
+            {"msgHeader":{"authLoginID":"prasanna@mintwalk.com","authToken":"VsYIfL6aTOceYZjUBsKNP.wIBxy/C3torr5xDb3puM9.!4yjKcNojRUjLeDknfXVepDfs0Vf4n1Eo","ipAddress":"1.1.1.1.1","timestamp":123456}}
+    mlGetDocListResponse:
+        title: Document Get List response
+        description: 'Document Type detection response'
+        type: object
+        properties:
+            type:
+                description: document get list.
+                type: string
+        example: |-
+              {"msgHeader": {"authToken": "xAaFVdgWSFf6vJEEwB8DAesb24BnShZweJ05hXblLQou!rxNMy4BkRT885suPFKcD9OPS3kZ4sJLb"},"data": {"error": 0,"message": "document details found","doc": [{"DOCUMENT_TYPE_ID": 100,"DOCUMENT_TYPE": "PAN","DOCUMENT_GROUP": "PAN"}]}}
+    mlAddCompanyGroupRequest:
+        title: mlGetAddCompanyGroupRequest
+        description: 'request for add company group'
+        type: object
+        properties:
+            authLoginID:
+                description: loginID.
+                type: string
+            authToken:
+                description: authToken.
+                type: string
+            ipAddress:
+                description: IP Address.
+                type: string
+            timeStamp:
+                description: timeStamp.
+                type: string
+        example: |-
+            {"msgHeader":{"authLoginID":"prasanna@mintwalk.com","authToken":"oHFyXQlWCA8om6tnJrO.5.MslCqRBZ05JheaDhZja77O!4yjKcNojRUjLeDknfXVepK2oYIj5ZXI4","ipAddress":"1.1.1.1.1","timestamp":123456},"data":{"groupName":"UBER2","displayName":"UBER1","iconUrl":"https://s3-ap-southeast-1.amazonaws.com/pubasset.mintwalk.com/images/companylogos/group/mint_walk.png","active":1,"companyName":"uber pvt limited","panNumber":"","isVendor":null,"preferred":null,"webUrl":"https://s3-ap-southeast-1.am"}}
+    mlAddCompanyGroupResponse:
+        title: Company Group Add response
+        description: 'Company group add response'
+        type: object
+        properties:
+            type:
+                description: company group add response.
+                type: string
+        example: |-
+              {"msgHeader": {"authToken": "xAaFVdgWSFf6vJEEwB8DAesb24BnShZweJ05hXblLQou!rxNMy4BkRT885suPFKcD9OPS3kZ4sJLb"},"data": {"error": 0,"message": "document details found","doc": [{"DOCUMENT_TYPE_ID": 100,"DOCUMENT_TYPE": "PAN","DOCUMENT_GROUP": "PAN"}]}}
+    mlGetCompanyDetailsRequest:
+        title: mlGetCompanyDetailsRequest
+        description: 'request for get company details'
+        type: object
+        properties:
+            authLoginID:
+                description: loginID.
+                type: string
+            authToken:
+                description: authToken.
+                type: string
+            ipAddress:
+                description: IP Address.
+                type: string
+            timeStamp:
+                description: timeStamp.
+                type: string
+        example: |-
+            {"msgHeader":{"authLoginID":"prasanna@mintwalk.com","authToken":"oHFyXQlWCA8om6tnJrO.5.MslCqRBZ05JheaDhZja77O!4yjKcNojRUjLeDknfXVepK2oYIj5ZXI4","ipAddress":"1.1.1.1.1","timestamp":123456},"data":{"groupName":"UBER2","displayName":"UBER1","iconUrl":"https://s3-ap-southeast-1.amazonaws.com/pubasset.mintwalk.com/images/companylogos/group/mint_walk.png","active":1,"companyName":"uber pvt limited","panNumber":"","isVendor":null,"preferred":null,"webUrl":"https://s3-ap-southeast-1.am"}}
+    mlGetCompanyDetailsResponse:
+        title: Company Get Details response
+        description: 'Company get details response'
+        type: object
+        properties:
+            type:
+                description: company get details list response.
+                type: string
+        example: |-
+              {"msgHeader": {"authToken": "xAaFVdgWSFf6vJEEwB8DAesb24BnShZweJ05hXblLQou!rxNMy4BkRT885suPFKcD9OPS3kZ4sJLb"},"data": {"error": 0,"message": "document details found","doc": [{"DOCUMENT_TYPE_ID": 100,"DOCUMENT_TYPE": "PAN","DOCUMENT_GROUP": "PAN"}]}}
+    mlCityMappingRequest:
+        title: mlCityMappingRequest
+        description: 'request for city mapping'
+        type: object
+        properties:
+            authLoginID:
+                description: loginID.
+                type: string
+            authToken:
+                description: authToken.
+                type: string
+            ipAddress:
+                description: IP Address.
+                type: string
+            timeStamp:
+                description: timeStamp.
+                type: string
+        example: |-
+            {"msgHeader":{"authLoginID":"prasanna@mintwalk.com","authToken":"oHFyXQlWCA8om6tnJrO.5.MslCqRBZ05JheaDhZja77O!4yjKcNojRUjLeDknfXVepK2oYIj5ZXI4","ipAddress":"1.1.1.1.1","timestamp":123456},"data":{"companyShortName":"UBER1","cityID":"24"}}
+    mlCityMappingResponse:
+        title: City mapping response
+        description: 'City mapping response'
+        type: object
+        properties:
+            type:
+                description: city mapping response.
+                type: string
+        example: |-
+              {"msgHeader": {"authToken": "RuKqNteth9bc/cXVfO4E9ONTYw4gZ04BWc9IHS0C6JTu!LBisKTGvTiU85suPFKcD9I8KAQFiPuLS"},"data": {"error": 0,"message": "city mapped successfully"}}
+    mlCompanyListGroupRequest:
+        title: mlCompanyListGroupRequest
+        description: 'request for getting list of company group'
+        type: object
+        properties:
+            authLoginID:
+                description: loginID.
+                type: string
+            authToken:
+                description: authToken.
+                type: string
+            ipAddress:
+                description: IP Address.
+                type: string
+            timeStamp:
+                description: timeStamp.
+                type: string
+        example: |-
+            {"msgHeader":{"authLoginID":"prasanna@mintwalk.com","authToken":"oHFyXQlWCA8om6tnJrO.5.MslCqRBZ05JheaDhZja77O!4yjKcNojRUjLeDknfXVepK2oYIj5ZXI4","ipAddress":"1.1.1.1.1","timestamp":123456},"data":{"companyShortName":"UBER1","cityID":"24"}}
+    mlCompanyListGroupResponse:
+        title: List of company group response
+        description: 'getting list of company group response'
+        type: object
+        properties:
+            type:
+                description: getting list of company group response.
+                type: string
+        example: |-
+              {"msgHeader": {"authToken": "keKW3Qi4.lVMo/b/ninYKOUEs0gNZPQXKfkT/O7hNh1.!LBisKTGvTiU85suPFKcD9JoPradqT1qT"},"data": {"company": [{"SHORT_NAME": "getclarity","DISPLAY_NAME": "GCFSPL","COMPANY_NAME": "GET CLARITY FINTECH SERVICES PVT LTD","GROUP_ID": 2,"GROUP_NAME": "GCFSPL"}],"group": [{"ID": 1,"GROUP_NAME": "UBER","DISPLAY_NAME": "UBER","ICON_URL": "https://s3-ap-southeast-1.amazonaws.com/pubasset.mintwalk.com/images/companylogos/group/uber.png","ACTIVE": 1,"CREATED_BY": "Admin","CREATED_DATE": "2018-10-12 15:56:51"}],"error": 0,"message": "company group successfully created"}}
+    mlGetCityListRequest:
+        title: mlGetCityListRequest
+        description: 'get list of cities'
+        type: object
+        properties:
+            authLoginID:
+                description: loginID.
+                type: string
+            authToken:
+                description: authToken.
+                type: string
+            ipAddress:
+                description: IP Address.
+                type: string
+            timeStamp:
+                description: timeStamp.
+                type: string
+        example: |-
+            {"msgHeader":{"authLoginID":"prasanna@mintwalk.com","authToken":"VsYIfL6aTOceYZjUBsKNP.wIBxy/C3torr5xDb3puM9.!4yjKcNojRUjLeDknfXVepDfs0Vf4n1Eo","ipAddress":"1.1.1.1.1","timestamp":123456}}
+    mlGetCityListResponse:
+        title:  Get  city List response
+        description: 'city list  response'
+        type: object
+        properties:
+            type:
+                description: city list.
+                type: string
+        example: |-
+              {"msgHeader": {"authToken": "xAaFVdgWSFf6vJEEwB8DAesb24BnShZweJ05hXblLQou!rxNMy4BkRT885suPFKcD9OPS3kZ4sJLb"},"data": {"error": 0,"message": "document details found","doc": [{"DOCUMENT_TYPE_ID": 100,"DOCUMENT_TYPE": "PAN","DOCUMENT_GROUP": "PAN"}]}}
